@@ -10,9 +10,9 @@ The data showed is not real.
 - [Link al Package Manager: npm 8.19.3](https://www.npmjs.com/package/npm/v/8.19.3)
 
 # Para ejecutar (puede tardar un par de minutos)
-1 - Abrir una linea de comandos o terminal adentro de la carpeta del proyecto descargado. 
-2 - npm i
-3 - ng serve
+- Abrir una linea de comandos o terminal adentro de la carpeta del proyecto descargado. 
+- npm i
+- ng serve
 
 
 
