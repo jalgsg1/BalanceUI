@@ -1,0 +1,175 @@
+<div
+  [formGroup]="filterForm"
+  role="form"
+  [attr.aria-label]="this.dynamicAriaLabels.filterOptionsLabel"
+  class="row-items"
+>
+  <div class="column-item">
+    <section>
+      <label for="initYearId">{{ this.labels.initDate }}:</label>
+      <input
+        id="initYearId"
+        class="custom-number-input"
+        [defaultValue]="'2022'"
+        min="2012"
+        max="2024"
+        type="number"
+        formControlName="initYear"
+        aria-label="Filtro 1 de 5 - Fecha, año"
+        (input)="onYearInitChange($event)"
+        (focusout)="afterYearChanges($event)"
+      />
+      <select
+        formControlName="initMonth"
+        class="custom-select"
+        id="initMonthId"
+        (change)="onChangeInitMonth($event)"
+        aria-label="Filtro 2 de 5 - Fecha, mes"
+      >
+        <option
+          [disabled]="
+            filterForm.value.initYear == this.currentYear &&
+            option.value > this.lastAvailableMonth
+          "
+          [value]="option.value"
+          *ngFor="let option of months"
+        >
+          {{ option.label }}
+        </option>
+      </select>
+    </section>
+  </div>
+
+  <div class="column-item">
+    <section>
+      <label for="yearPeriod"
+        >{{ this.dynamicAriaLabels.quantityFilter }}:</label
+      >
+      <input
+        id="yearPeriod"
+        class="custom-number-input"
+        [defaultValue]="3"
+        min="1"
+        [max]="this.maxYearsCompared"
+        type="number"
+        (focusout)="validateYearPeriod($event)"
+        aria-label="Filtro 3 de de 5 - años anteriores a comparar"
+        formControlName="yearsQuantity"
+      />
+    </section>
+  </div>
+
+  <div class="column-item">
+    <section>
+      <label for="labelRegimeId">{{ this.labels.regime }}:</label>
+      <select
+        formControlName="regime"
+        class="custom-select"
+        id="labelRegimeId"
+        aria-label="Filtro 4 de 5 - régimen"
+      >
+        <option [value]="option.value" *ngFor="let option of regimes">
+          {{ option.label }}
+        </option>
+      </select>
+    </section>
+  </div>
+
+  <div class="column-item">
+    <section *ngIf="!hideCategoryFIlter">
+      <label for="categoryId">{{ this.labels.category }}:</label>
+      <select
+        formControlName="category"
+        class="custom-select"
+        id="categoryId"
+        aria-label="Filtro 5 de 5 - por catagoría"
+        (change)="updateQuantityFilterLabel($event)"
+      >
+        <option [value]="option.value" *ngFor="let option of categories">
+          {{ option.label }}
+        </option>
+      </select>
+    </section>
+  </div>
+
+  <div class="column-item">
+    <section>
+      <button
+        class="buttons"
+        aria-label="Aplicar filtros seleccionados"
+        mat-raised-button
+        (click)="onSubmit()"
+        (keyup.enter)="onSubmit()"
+      >
+        Filtrar
+      </button>
+    </section>
+  </div>
+</div>
+
+<div role="group" [attr.aria-label]="this.labels.btnGroup" class="row-items">
+  <div class="column-item-graphic">
+    <section *ngIf="!tableActive">
+      <mat-slide-toggle
+        color="primary"
+        [checked]="includeHighConstrast"
+        (toggleChange)="changeTheme()"
+        [attr.aria-label]="this.dynamicAriaLabels.highContrastBtn"
+        >{{ this.labels.highContrastButton }}</mat-slide-toggle
+      >
+    </section>
+  </div>
+  <div class="column-item-graphic">
+    <section *ngIf="!tableActive">
+      <mat-slide-toggle
+        color="primary"
+        [checked]="includePattern"
+        (toggleChange)="setPatterns()"
+        [attr.aria-label]="this.dynamicAriaLabels.patternBtn"
+        >{{ this.labels.patterButton }}</mat-slide-toggle
+      >
+    </section>
+  </div>
+  <div class="column-item-graphic">
+    <section>
+      <button
+        (click)="this.tableActive = !this.tableActive"
+        mat-raised-button
+        class="buttons"
+      >
+        {{ this.tableActive ? this.labels.showGraphic : this.labels.showTable }}
+      </button>
+    </section>
+  </div>
+</div>
+
+<div class="v-chart">
+  <div aria-live="assertive">
+    <mat-spinner
+      *ngIf="!chartLoaded"
+      aria-label="Cargando datos del gráfico."
+      class="loading-animation"
+    ></mat-spinner>
+  </div>
+
+  <!-- tabindex="0" -->
+  <div aria-live="polite" *ngIf="chartLoaded" class="center-item">
+    <highcharts-chart
+      *ngIf="!tableActive"
+      aria-relevant="all"
+      [Highcharts]="chart"
+      [options]="chartOptions"
+      [(update)]="updateFlag"
+    >
+    </highcharts-chart>
+    <app-custom-highcharts-table
+      *ngIf="isBrowser && tableActive"
+      class="graphic-container"
+      aria-relevant="all"
+      [tableData]="this.tableData"
+      [caption]="this._chartData?.titleText"
+      [includeHighConstrast]="includeHighConstrast"
+    >
+    </app-custom-highcharts-table>
+  </div>
+</div>

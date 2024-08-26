@@ -1,0 +1,28 @@
+
+.v-table {
+  // min-width: 360px;
+  max-width: 50%;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+
+  td, th, caption {
+    border: 1px solid silver;
+    padding: 0.5em;
+    text-align: center;
+    // color: #333;
+  }
+  th {
+    font-weight: 600;
+  }
+  caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .highcharts-table-caption {
+    padding: 1em 0;
+  }
+}

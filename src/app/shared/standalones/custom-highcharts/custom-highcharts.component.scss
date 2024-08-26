@@ -1,0 +1,73 @@
+:host {
+  .row-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+    .column-item {
+      padding: 5px;
+      box-sizing: border-box;
+      text-align: center;  
+    }
+
+    .buttons {
+      color: #183867;
+      &:focus {
+        font-weight: bold;
+      }
+    }
+
+    .column-item-graphic {
+      padding: 5px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    @media (max-width: 500px) {
+      .column-item {
+        width: 100%;
+      }
+    }
+  }
+  
+  .custom-number-input {
+    height: 38px; border-radius: 5px; max-width: 80px; margin-right: 5px; margin-left: 5px;
+    border-width: thin;
+    font: 400 14px/20px;
+    text-align: center;
+  }
+
+  .custom-select {
+    background-color: white;
+    font: 400 14px/20px;
+    border-radius: 5px;
+    height: 38px;
+    margin-left: 5px;
+    &:focus {
+      box-shadow: 0 3px 8px rgba(64, 37, 216, 0.362);
+    }
+  }
+
+  .v-chart {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    margin-top: 15px;
+
+    .loading-animation {
+      display: inline-block;
+      margin-top: 4pc;
+    }
+
+    .center-item {
+      display: inline-block;
+    }
+
+    .graphic-container {
+      :focus {
+        border: 1px solid #5a5e67;
+        border-radius: 5px;
+      }
+    }
+  }
+}

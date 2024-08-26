@@ -1,0 +1,43 @@
+:host {
+  /* Estilo del footer */
+  footer {
+    /* Color de fondo */
+    background-color: #002060;
+    text-align: center;
+    padding: 0.3rem;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  footer p {
+    color: white;
+    margin: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    footer p {
+      padding-top: 2rem;
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+
+    footer p {
+      padding-top: 2rem;
+      font-size: 0.7rem;
+    }
+  }
+}

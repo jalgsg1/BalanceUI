@@ -1,0 +1,178 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette,sc
+// {imported above). For each palette, you can optionally specify a default, Lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$same-blue: #183867;
+$same-light-blue: #2196f3;
+
+$mat-dark-blue: (
+  50: #e5e8ea,
+  100: #bdc5ca,
+  200: #919ea6,
+  300: #657782,
+  400: #445a68,
+  500: $same-blue,
+  600: $same-blue,
+  700: $same-blue,
+  800: $same-blue,
+  900: $same-blue,
+  A100: $same-blue,
+  A200: $same-blue,
+  A400: $same-blue,
+  A700: $same-blue,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+
+$mat-light-blue: (
+  50: #e5e8ea,
+  100: #bdc5ca,
+  200: #919ea6,
+  300: #657782,
+  400: #445a68,
+  500: $same-light-blue,
+  600: $same-light-blue,
+  700: $same-light-blue,
+  800: $same-light-blue,
+  900: $same-light-blue,
+  A100: $same-light-blue,
+  A200: $same-light-blue,
+  A400: $same-light-blue,
+  A700: $same-light-blue,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+
+
+
+$light-theme-primary: mat.define-palette($mat-dark-blue);
+$dark-theme-primary: mat.define-palette($mat-light-blue);
+
+$dark-theme-warn: mat.define-palette(mat.$red-palette);
+$dark-theme-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
+
+$light-theme-theme: mat.define-light-theme((color: (
+  primary: $light-theme-primary,
+  accent: $dark-theme-accent,
+  warn: $dark-theme-warn,
+)));
+$dark-theme-theme: mat.define-dark-theme((color: (
+  primary: $dark-theme-primary,
+  accent: $dark-theme-accent,
+  warn: $dark-theme-warn,
+)));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($dark-theme-theme);
+
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente las columnas */
+  align-items: center;
+  /* Centra verticalmente las columnas */
+  width: 100%;
+  /* Asegura que la fila ocupe el 100% del ancho */
+  // height: 60vh;           /* Asegura que la fila ocupe el 100% de la altura de la ventana */
+}
+
+.column {
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente el contenido */
+  align-items: center;
+  /* Centra verticalmente el contenido */
+  width: 50%;
+  text-align: justify;
+  /* Justifica el texto dentro del párrafo */
+  margin: 0;
+  /* Elimina márgenes del párrafo */
+  padding: 30px;
+}
+
+.theme-light {
+  @include mat.all-component-themes($light-theme-theme);
+}
+
+.theme-dark {
+  @include mat.all-component-themes($dark-theme-theme);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .column {
+    width: 100%;
+    padding: 20px;
+  }
+  .button {
+    padding: 10px 50px; /* Reduce el relleno del botón en pantallas más pequeñas */
+  }
+  .banner-content h1 {
+    font-size: 50px; /* Reduce el tamaño del texto en el banner */
+  }
+}
+
+@media (max-width: 576px) {
+  .column {
+    padding: 10px;
+  }
+  .button {
+    font-size: 14px;
+    padding: 8px 30px; /* Reduce aún más el relleno del botón en pantallas más pequeñas */
+  }
+}

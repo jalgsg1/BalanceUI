@@ -1,0 +1,23 @@
+<div class="mat-elevation-z8"> 
+  <table tabindex="0" mat-table class="v-table">
+    <caption class="highcharts-table-caption mat-app-background">
+      Tabla de {{this.caption}}
+      <div> (Valores en millones de dólares) </div>
+    </caption>
+    <thead>
+      <tr mat-header-row>
+        <th mat-header-cell *ngFor="let columnHeader of this.tableData?.headers">
+          {{ columnHeader }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mat-header-row *ngFor="let variable of this.tableData?.rows">
+        <ng-container *ngFor="let cell of variable; let first = first;">
+          <th mat-header-cell *ngIf="first" class="highcharts-text" scope="row">{{ cell }}</th>
+          <td mat-cell *ngIf="!first">{{ cell }}</td>            
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>

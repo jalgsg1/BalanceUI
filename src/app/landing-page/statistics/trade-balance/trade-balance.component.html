@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="column">
+    <p>
+      La balanza comercial mide la diferencia entre las exportaciones y las
+      importaciones de bienes y servicios de un país. Un saldo positivo indica
+      un superávit, mientras que un saldo negativo señala un déficit. Diversos
+      factores influyen en la balanza comercial, incluyendo las fluctuaciones en
+      los precios de las materias primas, las políticas comerciales
+      internacionales y las variaciones en la demanda global. La balanza
+      comercial es un indicador crucial de la salud económica de un país,
+      reflejando su capacidad para competir en mercados internacionales.
+    </p>
+  </div>
+</div>
+
+<h2 class="subtitle">Resultados</h2>
+
+<app-custom-highcharts
+  (filterSelectionEmitter)="onFilterSelectionChange($event)"
+  [isTradeBalace]="isTradeBalace"
+  [hideCategoryFIlter]="hideCategoryFIlter"
+  [chartData]="this.tradeBalanceStatData"
+></app-custom-highcharts>

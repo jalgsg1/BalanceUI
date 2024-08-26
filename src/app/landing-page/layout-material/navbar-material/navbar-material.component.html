@@ -1,0 +1,118 @@
+
+<div style="height: 82vh;">
+  <mat-toolbar aria-label="Barra de navegación">
+    <mat-toolbar-row>
+      <button
+        mat-icon-button
+        (click)="sidenav.toggle()"
+        fxShow="true"
+        fxHide.gt-sm
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div fxShow="true" fxHide.lt-md>
+        <a 
+          routerLinkActive="active"
+          [routerLink]="'home'"
+          ariaCurrentWhenActive="page"
+        >
+          <app-logo-svg aria-label="Logo de Balance360" [logoColor]="this.logoColor" [letterColor]="this.logoLetterColor" [hSize]="100" [vSize]="50"></app-logo-svg>
+        </a>
+      </div>
+
+      <div fxShow="true" fxHide.lt-md>
+        <ul class="ul-menu" [class.ul-menu-dark]="isDark">
+          <ng-container *ngFor="let navItem of navItems; let first = first">
+            <li select="selector">
+              <a
+                *ngIf="first"
+                #navItemId0
+                class="nav-link"
+                routerLinkActive="active"
+                [routerLink]="navItem.routerLink"
+                ariaCurrentWhenActive="page"
+                >{{ navItem.label }}</a
+              >
+              <a
+                *ngIf="!first"
+                class="nav-link"
+                routerLinkActive="active"
+                [routerLink]="navItem.routerLink"
+                ariaCurrentWhenActive="page"
+                >{{ navItem.label }}</a
+              >
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+      <div class="dark-mode-toggle" fxShow="true" fxHide.lt-md>
+        <button *ngIf="!isDark" (click)="changeTheme(true)" mat-stroked-button aria-label="Tema claro activado">
+          <mat-icon>dark_mode</mat-icon>
+          Cambiar tema
+        </button> 
+        <button *ngIf="isDark" (click)="changeTheme(false)" mat-stroked-button aria-label="Tema oscuro activado">
+          <mat-icon>light_mode</mat-icon>
+          Cambiar tema
+        </button>
+      </div>
+      <div fxShow="true" fxHide.gt-sm style="margin-left: auto;">
+        <a 
+          routerLinkActive="active"
+          [routerLink]="'home'"
+          ariaCurrentWhenActive="page"
+        >
+          <app-logo-svg aria-label="Logo de Balance360" [logoColor]="this.logoColor" [letterColor]="this.logoLetterColor" [hSize]="100" [vSize]="50"></app-logo-svg>
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <!-- Vertical menu -->
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav class="v-sidebar">
+      <mat-nav-list>
+        <ul class="navbar-nav me-auto ul-sidebar" [class.ul-sidebar-dark]="isDark">
+          <ng-container *ngFor="let navItem of navItems; let first = first">
+            <li class="nav-item" select="selector">
+              <a
+                *ngIf="first"
+                #navItemId0
+                class="nav-link marginLeft"
+                routerLinkActive="active"
+                [routerLink]="navItem.routerLink"
+                ariaCurrentWhenActive="page"
+                >{{ navItem.label }}</a
+              >
+              <a
+                *ngIf="!first"
+                class="nav-link marginLeft"
+                routerLinkActive="active"
+                [routerLink]="navItem.routerLink"
+                ariaCurrentWhenActive="page"
+                >{{ navItem.label }}</a
+              >
+            </li>
+          </ng-container>    
+          <li style="margin-top: 5px;">
+            <button class="marginLeft button" *ngIf="!isDark" (click)="changeTheme(true)" mat-stroked-button aria-label="Tema claro activado">
+              <mat-icon>dark_mode</mat-icon>
+              Cambiar tema
+            </button> 
+            <button class="marginLeft button" *ngIf="isDark" (click)="changeTheme(false)" mat-stroked-button aria-label="Tema oscuro activado">
+              <mat-icon>light_mode</mat-icon>
+              Cambiar tema
+            </button>
+          </li>
+        </ul>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <main class="v-main mat-app-background" >
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<app-footer-material class="mat-app-background"></app-footer-material>

@@ -1,0 +1,14 @@
+:host {
+  .v-tabs {
+     margin-bottom: 10px;
+
+    nav {
+      border-bottom: 1px solid rgb(103, 103, 164);
+      display: flex;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+  }
+}

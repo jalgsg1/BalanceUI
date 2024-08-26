@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="column">
+        <p> Las exportaciones son bienes y servicios producidos en un país y vendidos a compradores extranjeros. Son fundamentales para el crecimiento económico, ya que generan ingresos, crean empleos y fomentan la producción industrial. Las exportaciones permiten a las empresas acceder a mercados más amplios y diversificados, reduciendo la dependencia del mercado interno. Factores como la competitividad, la calidad de los productos, los acuerdos comerciales y las tasas de cambio impactan significativamente el volumen y valor de las exportaciones. El aumento de las exportaciones fortalece la balanza comercial y puede mejorar la posición económica global de un país. </p>    
+    </div>
+</div>
+
+<h2 class="subtitle">Resultados</h2>
+<app-custom-highcharts (filterSelectionEmitter)="onFilterSelectionChange($event)" [isTradeBalace]="isTradeBalace"
+    [chartData]="this.exportsStatData"></app-custom-highcharts>

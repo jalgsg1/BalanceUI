@@ -1,0 +1,17 @@
+<div class="v-tabs">
+  <nav [tabPanel]="tabPanel" mat-tab-nav-bar mat-align-tabs="center">
+    <ng-container *ngFor="let item of list">
+      <a
+        mat-tab-link
+        (click)="selectTab(item)"
+        routerLinkActive="active"
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+        [routerLink]="item.routerLink"
+      >
+        {{ item.label }}
+      </a>
+    </ng-container>
+  </nav>
+</div>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel> 

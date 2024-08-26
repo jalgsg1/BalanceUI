@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="column">
+        <p> Las importaciones representan la adquisición de bienes y servicios producidos en el extranjero y comprados
+            por residentes de un país. Son esenciales para satisfacer la demanda interna que no puede ser cubierta por
+            la producción nacional, proporcionando acceso a productos que no están disponibles localmente, a menudo a
+            precios más competitivos. Factores como las políticas arancelarias, la tasa de cambio y las relaciones
+            diplomáticas influyen significativamente en el volumen y el valor de las importaciones. </p>
+    </div>
+</div>
+
+<h2 class="subtitle">Resultados</h2>
+<app-custom-highcharts (filterSelectionEmitter)="onFilterSelectionChange($event)" [isTradeBalace]="isTradeBalace"
+    [chartData]="this.importsStatData"></app-custom-highcharts>
