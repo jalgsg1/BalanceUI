@@ -1,4 +1,5 @@
-export const CHART_LANG = {
+export const CHART_LANG = 
+{
   contextButtonTitle: 'Menú de contexto del gráfico',
   decimalPoint: ',',
   drillUpText: "Regresar a {series.name}",
